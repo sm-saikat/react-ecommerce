@@ -1,0 +1,13 @@
+.myButton{
+    margin-top: 30px;
+    text-transform: uppercase;
+    padding: 12px 25px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    font-size: 12px;
+    font-weight: 600;
+    background-color: #fff;
+    color: #232323 !important;
+    box-shadow: rgb(0 0 0 / 10%) 0px 0px 12px 0px;
+}
