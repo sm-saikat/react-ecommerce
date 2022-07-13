@@ -8,6 +8,8 @@ import Signup from '../pages/Signup'
 import Cart from '../pages/Cart'
 import Shop from '../pages/Shop'
 import Product from '../pages/Product'
+import Playground from '../pages/Playground'
+
 
 const Routes = () => {
   return (
@@ -18,6 +20,7 @@ const Routes = () => {
         <Route path='/cart' element={<Cart />} />
         <Route path='/shop' element={<Shop />} />
         <Route path='/product' element={<Product />} />
+        <Route path='/play' element={<Playground />} />
     </Switch>
   )
 }

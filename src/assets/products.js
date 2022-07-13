@@ -2,6 +2,7 @@ import productImage from './product01.jpg'
 
 const products = [
     {
+        id: 1,
         title: 'Black Long Sleeve',
         price: 45,
         category: 'Shirts',
@@ -9,6 +10,7 @@ const products = [
     },
 
     {
+        id: 2,
         title: 'Red Jeans Pant',
         price: 108.05,
         category: 'Pants',
@@ -16,6 +18,7 @@ const products = [
     },
 
     {
+        id: 3,
         title: 'White Formal Shirt',
         price: 150,
         category: 'Shirts',
@@ -23,6 +26,7 @@ const products = [
     },
 
     {
+        id: 4,
         title: 'White Sports Shoe',
         price: 89,
         category: 'Shoes',
@@ -30,6 +34,7 @@ const products = [
     },
 
     {
+        id: 5,
         title: 'Black Sneakers for Men',
         price: 99,
         category: 'Shoes',

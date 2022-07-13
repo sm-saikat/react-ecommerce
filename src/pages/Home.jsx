@@ -12,16 +12,14 @@ const Home = () => {
   const [category, setCategory] = useState("all");
   const [filteredProducts, setFilteredProducts] = useState([])
 
-  useEffect(() => {
+  useEffect(()=>{
     const fetchProduct = async () => {
       const response = await fetch("https://fakestoreapi.com/products?limit=9");
       const data = await response.json();
       setProducts(data)
     };
-
     fetchProduct();
-    // setProducts(allProducts)
-  }, []);
+  }, [])
 
   useEffect(()=>{
     setFilteredProducts(products)

@@ -1,9 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { useEffect } from "react";
 
 const initialState = {
   cartItems: [],
-  totalAmount: 0,
+  totalAmount: 0
 };
 
 const cartSlice = createSlice({
@@ -20,44 +19,27 @@ const cartSlice = createSlice({
       } else {
         state.cartItems.push(action.payload);
       }
-
-      const total = state.cartItems.reduce(
-        (prev, curr) => (prev + curr.price) * curr.count,
-        0
-      );
-      state.totalAmount = total.toFixed(2);
     },
 
     removeItem(state, action) {
       state.cartItems = state.cartItems.filter((item) => {
         return !(item.id === action.payload);
       });
-
-      const total = state.cartItems.reduce(
-        (prev, curr) => (prev + curr.price) * curr.count,
-        0
-      );
-      state.totalAmount = total.toFixed(2);
     },
 
     increaseItem(state, action) {
       const item = state.cartItems.find(item => item.id === action.payload)
       item.count++
-      const total = state.cartItems.reduce(
-        (prev, curr) => (prev + curr.price) * curr.count,
-        0
-      );
-      state.totalAmount = total.toFixed(2);
     },
 
     decreaseItem(state, action) {
       const item = state.cartItems.find(item => item.id === action.payload)
-      item.count--
-      const total = state.cartItems.reduce(
-        (prev, curr) => (prev + curr.price) * curr.count,
-        0
-      );
-      state.totalAmount = total.toFixed(2);
+
+      if(item.count === 1){
+        state.cartItems = state.cartItems.filter(item => item.id !== action.payload)
+      }else{
+        item.count--
+      }
     },
   
     updateTotal(state, action) {
@@ -71,5 +53,5 @@ const cartSlice = createSlice({
 });
 
 
-export const { addItem, removeItem, increaseItem, decreaseItem } = cartSlice.actions;
+export const { addItem, removeItem, increaseItem, decreaseItem, updateTotal } = cartSlice.actions;
 export default cartSlice.reducer;

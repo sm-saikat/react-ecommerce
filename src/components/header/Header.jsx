@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
@@ -26,7 +26,12 @@ const Header = () => {
   ];
 
   const headerRef = useRef(null)
-  const cartSidebar = useRef(null)
+
+  const [cartOpen, setCartOpen] = useState(false)
+  const [cartItemCount, setCartItemCount] = useState(0)
+
+  const cartItems = useSelector(state => state.cart.cartItems)
+
 
   useEffect(()=>{
     const scrollHandler = ()=>{
@@ -40,12 +45,15 @@ const Header = () => {
 
   }, [])
 
+  useEffect(()=>{
+    const totalItem = cartItems.reduce((prev, curr)=> prev + curr.count, 0)
+    setCartItemCount(totalItem)
+  }, [cartItems])
+
   // ====Cart Toggle====
   const cartToggleHandler = ()=>{
-    cartSidebar.current.style.display = 'block'
+    setCartOpen(prev => !prev)
   }
-
-  const cartItems = useSelector(state => state.cart.cartItems)
 
   return (
       <header ref={headerRef}>
@@ -67,7 +75,7 @@ const Header = () => {
         <div className="right-menu">
           <div onClick={cartToggleHandler} className="cart menu__item">
             <ShoppingBagOutlinedIcon />
-            <span className="cart-count">{cartItems.length}</span>
+            <span className="cart-count">{cartItemCount}</span>
           </div>
 
           <div className="account menu__item">
@@ -75,7 +83,7 @@ const Header = () => {
           </div>
         </div>
 
-        <CartSidebar forwardedRef={cartSidebar} />
+        <CartSidebar cartOpen={cartOpen} cartToggleHandler={cartToggleHandler} />
       </header>
   );
 };
