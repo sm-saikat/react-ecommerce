@@ -5,6 +5,7 @@ header{
     align-items: center;
     justify-items: center;
     padding: 10px 50px;
+    border-bottom: 1px solid #cdcdcd;
     transition: 0.3s;
 }
 

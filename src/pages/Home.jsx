@@ -4,8 +4,8 @@ import HeroBanner from "../components/UI/banners/HeroBanner";
 import MyHeading from "../components/UI/MyHeading";
 import ProductCard from "../components/UI/ProductCard/ProductCard";
 import "../styles/Home.css";
+import {motion} from 'framer-motion'
 
-// import allProducts from '../assets/products'
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -14,7 +14,7 @@ const Home = () => {
 
   useEffect(()=>{
     const fetchProduct = async () => {
-      const response = await fetch("https://fakestoreapi.com/products?limit=9");
+      const response = await fetch("http://localhost:5000/products");
       const data = await response.json();
       setProducts(data)
     };
@@ -48,16 +48,16 @@ const Home = () => {
           <span className="active" onClick={() => setCategory("all")}>
             All
           </span>
-          <span onClick={() => setCategory("jewelery")}>Jewelery</span>
-          <span onClick={() => setCategory("men's clothing")}>Mens</span>
-          <span onClick={() => setCategory("electronics")}>Electronics</span>
+          <span onClick={() => setCategory("mens-watches")}>Watches</span>
+          <span onClick={() => setCategory("laptops")}>Laptops</span>
+          <span onClick={() => setCategory("lighting")}>Lighting</span>
         </div>
 
-        <div className="products">
+        <motion.div className="products">
           {filteredProducts.map((product) => {
             return <ProductCard key={product.id} product={product} />;
           })}
-        </div>
+        </motion.div>
       </div>
     </div>
   );

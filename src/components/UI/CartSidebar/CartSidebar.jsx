@@ -38,7 +38,7 @@ const CartSidebar = ({cartOpen, cartToggleHandler}) => {
             cart.cartItems.length > 0 ? cart.cartItems.map((item) => {
               return (
                 <div key={item.id} className="cart__item">
-                  <img src={item.image} alt="product" />
+                  <img src={item.thumbnail} alt="product" />
   
                   <div className="cart__product__details">
                     <div className="cart__product__title">{item.title}</div>
